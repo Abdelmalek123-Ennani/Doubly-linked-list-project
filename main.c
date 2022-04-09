@@ -33,16 +33,16 @@ struct contact_t {
     char phone[10];
 };
 
-// initialisation  (it Works perefectly)
+// initialisation
 repo_t *initialisation() {
-    // memory allocation for our repo 
+    // memory allocation for repo 
     repo_t *repository = malloc(sizeof(*repository));
     // set the nbre to 26 (number of lists)
     repository->nbre = 26;
-    // // memory allocation for our lists (we want 26 lists) 
+    // memory allocation for our lists (we want 26 lists) 
     repository->lists = malloc(sizeof(*repository->lists) *  repository->nbre);
     
-    // loop over lists and set T to null (cause there is no node yet) and nbr to 0
+    // loop over lists and set T to null (cause there are no nodes yet) and nbr to 0
     int i;
     for (i=0; i< repository->nbre ;i++) {
         repository->lists[i].T = NULL;
@@ -50,7 +50,7 @@ repo_t *initialisation() {
     }
    
 
-   // return out repo
+   // return the repo
    return repository;
    
 }
@@ -60,12 +60,12 @@ repo_t *initialisation() {
 void ajouterUnContact(liste_t *list , contact_t *person) {
     
     // get  the first letter of the name to know the index of list that we want to add the node to 
-    char firstLetter = toupper(person->nom[0]); // first letter on the name
+    char firstLetter = toupper(person->nom[0]); // first letter of the name
     int listIndice = firstLetter - 65;          // get the index
-    node_t *node =  list[listIndice].T;        // select the list (based on the prev index)
+    node_t *node =  list[listIndice].T;        // select the list (based on the index)
     
     
-    // cheak if the person is already exists
+    // check if guven person is already exists
     while(node != NULL) {
         char *name = node->contact->nom;
         char *prenom = node->contact->prenom;
